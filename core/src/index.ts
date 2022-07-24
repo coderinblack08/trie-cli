@@ -102,18 +102,18 @@ app.get("/", async (_req, res) => {
 });
 
 app.get("/treeify", async (_req, res) => {
-  const containsValidWore = (node: TrieNode): boolean => {
+  const containsValidWord = (node: TrieNode): boolean => {
     if (node.isValidWord) return true;
     let valid = false;
     for (const child of Object.keys(node.children)) {
-      valid = valid || containsValidWore(node.children[child]);
+      valid = valid || containsValidWord(node.children[child]);
     }
     return valid;
   };
   const convertToTree = (node: TrieNode) => {
     const treeObject: Record<string, any> = {};
     for (const child of Object.keys(node.children)) {
-      if (containsValidWore(node.children[child])) {
+      if (containsValidWord(node.children[child])) {
         treeObject[child] = convertToTree(node.children[child]);
       }
     }

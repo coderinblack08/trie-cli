@@ -1,4 +1,16 @@
-# API Reference
+# Slingshot Algorithms Test (Trie Data Structure CLI)
+
+> Project for [slingshotahead.com](https://slingshotahead.com)'s technical/specialization test
+
+## Stacked Used
+
+- Node.js
+- Typescript
+- Npm Registry
+- Commander (CLI)
+- Express.js
+
+## API Reference
 
 Deployed on Railway (https://trie-cli-production.up.railway.app)
 
@@ -12,6 +24,8 @@ Deployed on Railway (https://trie-cli-production.up.railway.app)
 
 - `curl -X DELETE -H "Content-Type:application/json" \ -d '{"word": <your-word-here>}' \ http://localhost:5500/`: Delete the word in the request body from the trie
 
-# CLI
+## CLI
 
 Either `cd` into cli and run `yarn start ...` or install the cli via npm using `npm i -g cib-trie-cli` and type `trie --help` to view available commands.
+
+## Video Demo
