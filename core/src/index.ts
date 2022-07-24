@@ -2,6 +2,7 @@ import { Trie, TrieNode } from "./Trie";
 import { asTree } from "treeify";
 import express from "express";
 import { AsyncTaskQueue } from "./TaskQueue";
+import cors from "cors";
 
 /**  
 Tire class example:
@@ -31,6 +32,7 @@ state.insert("pass");
 
 const app = express();
 
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -40,6 +42,7 @@ app.post("/", async (req, res) => {
       if (typeof req.body.word !== "string") {
         throw new Error("Invalid word");
       }
+      console.log(req.body.word);
       state.insert(req.body.word);
     });
     res.status(201).send("Successfully added word to global trie");
