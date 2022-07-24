@@ -28,4 +28,8 @@ Deployed on Railway (https://trie-cli-production.up.railway.app)
 
 Either `cd` into cli and run `yarn start ...` or install the cli via npm using `npm i -g cib-trie-cli` and type `trie --help` to view available commands.
 
+## Testing
+
+All testing is done with jest and can be viewed in the CLI folder.
+
 ## Video Demo
