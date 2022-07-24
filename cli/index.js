@@ -5,9 +5,9 @@ import axios from "axios";
 import chalk from "chalk";
 
 const API_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://trie-cli-production.up.railway.app"
-    : "http://localhost:5500";
+  process.env.NODE_ENV === "local"
+    ? "http://localhost:5500"
+    : "https://trie-cli-production.up.railway.app";
 
 program
   .command("show")
@@ -59,7 +59,7 @@ program
   .description("Delete a word to the trie")
   .action(async (word) => {
     try {
-      await axios.delete(API_URL, { word });
+      await axios.delete(API_URL, { data: { word } });
       console.log(chalk.bgGreen(`Deleted ${word} successfully`));
     } catch (error) {
       console.log(chalk.bgRed(`Error occurred while deleting ${word}`));

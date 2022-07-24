@@ -14,6 +14,4 @@ Deployed on Railway (https://trie-cli-production.up.railway.app)
 
 # CLI
 
-Either `cd` into cli and run `npm i -g` or install the cli via npm using `npm i -g coderinblack-trie-cli`.
-
-Type `trie --help` to view available commands.
+Either `cd` into cli and run `yarn start ...` or install the cli via npm using `npm i -g coderinblack-trie-cli` and type `trie --help` to view available commands.
