@@ -1,4 +1,5 @@
-import { Trie } from "./Trie";
+import { Trie, TrieNode } from "./Trie";
+import { asTree } from "treeify";
 import express from "express";
 import { AsyncTaskQueue } from "./TaskQueue";
 
@@ -95,6 +96,17 @@ app.get("/", async (_req, res) => {
   } catch (error) {
     res.status(400).send(error.message);
   }
+});
+
+app.get("/treeify", async (_req, res) => {
+  const convertToTree = (node: TrieNode) => {
+    const treeObject: Record<string, any> = {};
+    for (const child of Object.keys(node.children)) {
+      treeObject[child] = convertToTree(node.children[child]);
+    }
+    return treeObject;
+  };
+  res.send(asTree(convertToTree(state.root), true, true));
 });
 
 app.listen(process.env.PORT || 5500, () =>

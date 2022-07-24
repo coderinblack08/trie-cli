@@ -1,4 +1,4 @@
-class TrieNode {
+export class TrieNode {
   children: Record<string, TrieNode> = {};
   isValidWord: boolean = false;
   value: string | null;
