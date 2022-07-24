@@ -5,7 +5,9 @@ import axios from "axios";
 import chalk from "chalk";
 
 const API_URL =
-  process.env.NODE_ENV === "production" ? "" : "http://localhost:5500";
+  process.env.NODE_ENV === "production"
+    ? "https://trie-cli-production.up.railway.app"
+    : "http://localhost:5500";
 
 program
   .command("show")
