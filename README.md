@@ -37,3 +37,5 @@ Either `cd` into cli and run `yarn start ...` or install the cli via npm using `
 All testing is done with jest and can be viewed in the CLI folder. Further elaboration on in the demo video.
 
 ## Video Demo
+
+https://www.youtube.com/watch?v=H9z_5B610Fo&ab_channel=Kevin
