@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from "commander";
-import { show, search, startsWith, addWord, deleteWord } from "./commands";
+import { show, search, startsWith, addWord, deleteWord } from "./commands.js";
 
 program.command("show").description("Display the current trie").action(show);
 

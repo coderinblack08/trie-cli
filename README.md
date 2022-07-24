@@ -10,9 +10,13 @@
 - Commander (CLI)
 - Express.js
 
-## API Reference
+## Deployment
 
-Deployed on Railway (https://trie-cli-production.up.railway.app)
+API deployed on Railway (https://trie-cli-production.up.railway.app)
+
+CLI deployed on npm (https://www.npmjs.com/package/cib-trie-cli)
+
+## API Reference
 
 - `curl -X GET http://localhost:5500/`: Returns the trie object
 
@@ -30,6 +34,6 @@ Either `cd` into cli and run `yarn start ...` or install the cli via npm using `
 
 ## Testing
 
-All testing is done with jest and can be viewed in the CLI folder.
+All testing is done with jest and can be viewed in the CLI folder. Further elaboration on in the demo video.
 
 ## Video Demo
