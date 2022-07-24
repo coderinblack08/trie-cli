@@ -7,31 +7,29 @@ export class AsyncTaskQueue {
     reject: (err: Error) => void;
   }[] = [];
 
-  public enqueue(promise: () => Promise<void>) {
+  public add(promise: () => Promise<void>) {
     return new Promise((resolve, reject) => {
       this.queue.push({ promise, resolve, reject });
-      this.dequeue();
+      this.process();
     });
   }
 
-  public dequeue() {
+  public process() {
     if (this.inProgress) return;
     const task = this.queue.shift();
     if (!task) return;
-
     this.inProgress = true;
-
     task
       .promise()
       .then((value) => {
         this.inProgress = false;
         task.resolve(value);
-        this.dequeue();
+        this.process();
       })
       .catch((err) => {
         this.inProgress = false;
         task.reject(err);
-        this.dequeue();
+        this.process();
       });
   }
 }

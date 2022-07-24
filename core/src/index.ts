@@ -3,7 +3,7 @@ import express from "express";
 import { AsyncTaskQueue } from "./TaskQueue";
 
 /**  
-Example usage:
+Tire class example:
 
 const dict = new Trie();
 
@@ -22,14 +22,20 @@ console.log(dict.search("pan", true));
 const state = new Trie();
 const queue = new AsyncTaskQueue();
 
+// Initiate test data
+state.insert("pot");
+state.insert("part");
+state.insert("past");
+state.insert("pass");
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/insert", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
-    await queue.enqueue(async () => {
+    await queue.add(async () => {
       if (typeof req.body.word !== "string") {
         throw new Error("Invalid word");
       }
@@ -41,9 +47,9 @@ app.post("/insert", async (req, res) => {
   }
 });
 
-app.post("/delete", async (req, res) => {
+app.delete("/", async (req, res) => {
   try {
-    await queue.enqueue(async () => {
+    await queue.add(async () => {
       if (typeof req.body.word !== "string") {
         throw new Error("Invalid word");
       }
@@ -57,7 +63,7 @@ app.post("/delete", async (req, res) => {
 
 app.get("/search", async (req, res) => {
   try {
-    await queue.enqueue(async () => {
+    await queue.add(async () => {
       if (!req.query.word) {
         throw new Error("Please provide a word");
       }
@@ -70,7 +76,7 @@ app.get("/search", async (req, res) => {
 
 app.get("/starts-with", async (req, res) => {
   try {
-    await queue.enqueue(async () => {
+    await queue.add(async () => {
       if (!req.query.word) {
         throw new Error("Please provide a word");
       }
@@ -83,7 +89,7 @@ app.get("/starts-with", async (req, res) => {
 
 app.get("/", async (_req, res) => {
   try {
-    await queue.enqueue(async () => {
+    await queue.add(async () => {
       res.status(200).json(state);
     });
   } catch (error) {
